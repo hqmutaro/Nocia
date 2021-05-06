@@ -9,14 +9,14 @@ class News extends StatelessWidget {
     return FutureBuilder(
       future: context.read<NewsNotifier>().loadNews(),
       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          var newsList = context.select<NewsState, List>((state) => state.newsList);
-          return Center(
-            child: Text("News List Loaded.")
-          );
-          // TODO: RSSを表示するWidgetを構築
+        if (snapshot.connectionState != ConnectionState.done) {
+          return Center(child: CircularProgressIndicator());
         }
-        return Center(child: CircularProgressIndicator());
+        var newsList = context.select<NewsState, List>((state) => state.newsList);
+        return Center(
+            child: Text("News List Loaded.")
+        );
+        // TODO: RSSを表示するWidgetを構築
       },
     );
   }
