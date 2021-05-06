@@ -26,6 +26,9 @@ dependencies:
   state_notifier: ^0.7.0
   flutter_state_notifier: ^0.7.0
   freezed_annotation: ^0.14.1
+  webfeed: ^0.7.0
+  http: ^0.13.3
+  uuid: ^3.0.4
 
 
   # The following adds the Cupertino Icons font to your application.
