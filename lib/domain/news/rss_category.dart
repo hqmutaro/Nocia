@@ -6,33 +6,33 @@ const int activityId = 0;
 const int examinationId = 1;
 const int notificationId = 2;
 
-enum RssType {
+enum RssCategory {
   Activity,
   Examination,
   Notification
 }
 
-String toTypeName(RssType type) {
+String toCategoryName(RssCategory type) {
   switch (type) {
-    case RssType.Activity:
+    case RssCategory.Activity:
       return activityName;
-    case RssType.Examination:
+    case RssCategory.Examination:
       return examinationName;
-    case RssType.Notification:
+    case RssCategory.Notification:
       return notificationName;
     default:
-      throw Exception("Type Not Found");
+      throw Exception("The Category Not Found");
   }
 }
 
-RssType toType(int id) {
+RssCategory toCategory(int id) {
   switch (id) {
     case activityId:
-      return RssType.Activity;
+      return RssCategory.Activity;
     case examinationId:
-      return RssType.Examination;
+      return RssCategory.Examination;
     case notificationId:
-      return RssType.Notification;
+      return RssCategory.Notification;
     default:
       throw Exception("ID Not Found");
   }

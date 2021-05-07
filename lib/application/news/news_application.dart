@@ -1,7 +1,7 @@
 import 'package:nocia/domain/news/news.dart';
 import 'package:nocia/domain/news/news_factory_base.dart';
 import 'package:nocia/domain/news/rss_repository_base.dart';
-import 'package:nocia/domain/news/type.dart';
+import 'package:nocia/domain/news/rss_category.dart';
 import 'package:webfeed/domain/rss_item.dart';
 
 class NewsApplication{
@@ -19,16 +19,16 @@ class NewsApplication{
   })  : _rssRepository = rssRepository,
         _newsFactory = newsFactory;
 
-  Future<News> fetchRss(RssType type) async{
+  Future<News> fetchRss(RssCategory type) async{
     String url;
     switch (type) {
-      case RssType.Activity:
+      case RssCategory.Activity:
         url = _baseUrl + _activityUrl;
         break;
-      case RssType.Examination:
+      case RssCategory.Examination:
         url = _baseUrl + _examinationUrl;
         break;
-      case RssType.Notification:
+      case RssCategory.Notification:
         url = _baseUrl + _notificationUrl;
         break;
     }

@@ -1,15 +1,15 @@
 import 'package:nocia/domain/news/news_id.dart';
-import 'package:nocia/domain/news/type.dart';
+import 'package:nocia/domain/news/rss_category.dart';
 import 'package:webfeed/domain/rss_item.dart';
 
 class News {
   final NewsId id;
-  final RssType _rssType;
+  final RssCategory _rssType;
   final List<RssItem> _items;
 
   News({
     required this.id,
-    required RssType rssType,
+    required RssCategory rssType,
     required List<RssItem> items
   })  : _rssType = rssType,
         _items = items;
@@ -21,7 +21,7 @@ class News {
   @override
   int get hashCode => id.hashCode;
 
-  RssType get type => _rssType;
+  RssCategory get type => _rssType;
 
   List<RssItem> get items => _items;
 }
