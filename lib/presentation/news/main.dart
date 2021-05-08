@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nocia/domain/news/news.dart' as model;
+import 'package:nocia/domain/news/news_categorized.dart';
+import 'package:nocia/presentation/news/widgets/news_list.dart';
 import 'package:nocia/presentation/notifier/news/news_notifier.dart';
 import 'package:nocia/presentation/notifier/news/news_state.dart';
 import 'package:provider/provider.dart';
@@ -14,12 +15,9 @@ class News extends StatelessWidget {
         if (snapshot.connectionState != ConnectionState.done) {
           return Center(child: CircularProgressIndicator());
         }
-        var newsList = context.select<NewsState, List<model.News>>((state) => state.newsList);
-        return Center(
-            child: Text("News List Loaded.")
-        );
-        // TODO: RSSを表示するWidgetを構築
-      },
+        var newsCategorizedList = context.select<NewsState, List<NewsCategorized>>((state) => state.newsCategorizedList);
+        return NewsList(newsCategorizedList: newsCategorizedList);
+      }
     );
   }
 }
