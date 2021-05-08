@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NewsStateTearOff {
   const _$NewsStateTearOff();
 
-  _NewsState call({List<News> newsList = const <News>[]}) {
+  _NewsState call(
+      {List<NewsCategorized> newsCategorizedList = const <NewsCategorized>[]}) {
     return _NewsState(
-      newsList: newsList,
+      newsCategorizedList: newsCategorizedList,
     );
   }
 }
@@ -28,7 +29,8 @@ const $NewsState = _$NewsStateTearOff();
 
 /// @nodoc
 mixin _$NewsState {
-  List<News> get newsList => throw _privateConstructorUsedError;
+  List<NewsCategorized> get newsCategorizedList =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewsStateCopyWith<NewsState> get copyWith =>
@@ -39,7 +41,7 @@ mixin _$NewsState {
 abstract class $NewsStateCopyWith<$Res> {
   factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
       _$NewsStateCopyWithImpl<$Res>;
-  $Res call({List<News> newsList});
+  $Res call({List<NewsCategorized> newsCategorizedList});
 }
 
 /// @nodoc
@@ -52,13 +54,13 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? newsList = freezed,
+    Object? newsCategorizedList = freezed,
   }) {
     return _then(_value.copyWith(
-      newsList: newsList == freezed
-          ? _value.newsList
-          : newsList // ignore: cast_nullable_to_non_nullable
-              as List<News>,
+      newsCategorizedList: newsCategorizedList == freezed
+          ? _value.newsCategorizedList
+          : newsCategorizedList // ignore: cast_nullable_to_non_nullable
+              as List<NewsCategorized>,
     ));
   }
 }
@@ -69,7 +71,7 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
           _NewsState value, $Res Function(_NewsState) then) =
       __$NewsStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<News> newsList});
+  $Res call({List<NewsCategorized> newsCategorizedList});
 }
 
 /// @nodoc
@@ -83,13 +85,13 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? newsList = freezed,
+    Object? newsCategorizedList = freezed,
   }) {
     return _then(_NewsState(
-      newsList: newsList == freezed
-          ? _value.newsList
-          : newsList // ignore: cast_nullable_to_non_nullable
-              as List<News>,
+      newsCategorizedList: newsCategorizedList == freezed
+          ? _value.newsCategorizedList
+          : newsCategorizedList // ignore: cast_nullable_to_non_nullable
+              as List<NewsCategorized>,
     ));
   }
 }
@@ -97,29 +99,30 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NewsState implements _NewsState {
-  const _$_NewsState({this.newsList = const <News>[]});
+  const _$_NewsState({this.newsCategorizedList = const <NewsCategorized>[]});
 
-  @JsonKey(defaultValue: const <News>[])
+  @JsonKey(defaultValue: const <NewsCategorized>[])
   @override
-  final List<News> newsList;
+  final List<NewsCategorized> newsCategorizedList;
 
   @override
   String toString() {
-    return 'NewsState(newsList: $newsList)';
+    return 'NewsState(newsCategorizedList: $newsCategorizedList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _NewsState &&
-            (identical(other.newsList, newsList) ||
+            (identical(other.newsCategorizedList, newsCategorizedList) ||
                 const DeepCollectionEquality()
-                    .equals(other.newsList, newsList)));
+                    .equals(other.newsCategorizedList, newsCategorizedList)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(newsList);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(newsCategorizedList);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +131,12 @@ class _$_NewsState implements _NewsState {
 }
 
 abstract class _NewsState implements NewsState {
-  const factory _NewsState({List<News> newsList}) = _$_NewsState;
+  const factory _NewsState({List<NewsCategorized> newsCategorizedList}) =
+      _$_NewsState;
 
   @override
-  List<News> get newsList => throw _privateConstructorUsedError;
+  List<NewsCategorized> get newsCategorizedList =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewsStateCopyWith<_NewsState> get copyWith =>
