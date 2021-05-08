@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nocia/presentation/news/page.dart';
 import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
 import 'package:nocia/presentation/notifier/home/counter_state.dart';
-import 'package:nocia/presentation/timetable/page.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final List<Widget> _page = [
-    NewsPage(),
-    TimetablePage()
+    NewsPage()
   ];
 
   @override
