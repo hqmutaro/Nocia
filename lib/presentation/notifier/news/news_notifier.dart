@@ -6,14 +6,14 @@ import 'package:state_notifier/state_notifier.dart';
 class NewsNotifier extends StateNotifier<NewsState> {
   final NewsApplication _app;
 
-  NewsNotifier({required NewsApplication app,}) :  _app = app, super(const NewsState(newsList: []));
+  NewsNotifier({required NewsApplication app}) :  _app = app, super(const NewsState(newsCategorizedList: []));
 
   Future<void> loadNews() async{
-    var newsList = await Future.wait([
+    var newsCategorizedList = await Future.wait([
       _app.fetchRss(RssCategory.Activity),
       _app.fetchRss(RssCategory.Examination),
       _app.fetchRss(RssCategory.Notification)
     ]);
-    state = state.copyWith(newsList: newsList);
+    state = state.copyWith(newsCategorizedList: newsCategorizedList);
   }
 }
