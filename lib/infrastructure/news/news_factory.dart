@@ -9,11 +9,10 @@ class NewsFactory implements NewsFactoryBase {
   const NewsFactory();
 
   @override
-  News create({required RssCategory type, required List<RssItem> items}) {
+  News create({required RssItem item}) {
     return News(
         id: NewsId(Uuid().v4()),
-        rssType: type,
-        items: items
+        item: item
     );
   }
 }
