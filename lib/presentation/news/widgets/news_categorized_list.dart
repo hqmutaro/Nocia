@@ -5,7 +5,7 @@ import 'package:nocia/domain/news/news_categorized.dart';
 class NewsCategorizedList extends StatelessWidget {
   final NewsCategorized _newsCategorized;
 
-    NewsCategorizedList({required NewsCategorized newsCategorized}) : _newsCategorized = newsCategorized;
+  NewsCategorizedList({required NewsCategorized newsCategorized}) : _newsCategorized = newsCategorized;
 
   @override
   Widget build(BuildContext context) {
