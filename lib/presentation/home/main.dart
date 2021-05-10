@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nocia/presentation/news/page.dart';
 import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
 import 'package:nocia/presentation/notifier/home/counter_state.dart';
+import 'package:nocia/presentation/timetable/page.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final List<Widget> _page = [
-    NewsPage()
+    NewsPage(),
+    TimetablePage()
   ];
 
   @override
@@ -25,11 +27,11 @@ class Home extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.article_rounded),
-            label: ""
+            label: "ニュース"
         ),
         BottomNavigationBarItem(
             icon: Icon(Icons.table_chart_rounded),
-            label: ""
+            label: "時間割"
         )
       ],
     );
