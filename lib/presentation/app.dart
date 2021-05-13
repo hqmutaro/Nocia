@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:nocia/presentation/home/page.dart';
-import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
-import 'package:nocia/presentation/notifier/home/counter_state.dart';
+import 'package:nocia/presentation/auth/page.dart';
 
 class App extends StatelessWidget {
   const App();
@@ -10,7 +7,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage()
+        debugShowCheckedModeBanner: false,
+        home: AuthPage()
     );
   }
 }
