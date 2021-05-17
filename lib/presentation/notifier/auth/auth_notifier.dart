@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nocia/application/auth/auth_application.dart';
 import 'package:nocia/presentation/notifier/auth/auth_values_state.dart';
 import 'package:state_notifier/state_notifier.dart';
@@ -14,6 +15,10 @@ class AuthNotifier extends StateNotifier<AuthValuesState> {
   Future<void> signInWithEmailAndPassword() async {
     await _app.signInWithEmailAndPassword(state.email, state.password);
   }
+  
+  Future<void> sendPasswordResetEmail() async {
+    await _app.sendPasswordResetEmail(state.email);
+  }
 
   void setEmailAddress(String value) {
     state = state.copyWith(email: value);
@@ -22,4 +27,6 @@ class AuthNotifier extends StateNotifier<AuthValuesState> {
   void setPassword(String value) {
     state = state.copyWith(password: value);
   }
+
+  Future<void> signOut() async => await _app.signOut();
 }
