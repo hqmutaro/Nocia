@@ -9,7 +9,7 @@ class FirebaseAuthRepository implements FirebaseAuthRepositoryBase {
   FirebaseAuthRepository({required FirebaseAuth firebaseAuth})  : _firebaseAuth = firebaseAuth;
 
   @override
-  Future<User?> getSignedInUser() async =>  _firebaseAuth.currentUser;
+  User? getSignedInUser() =>  _firebaseAuth.currentUser;
 
   @override
   Future<void> registerWithEmailAndPassword({
@@ -35,6 +35,12 @@ class FirebaseAuthRepository implements FirebaseAuthRepositoryBase {
         email: emailValue,
         password: passwordValue
     );
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail({required EmailAddress email}) async {
+    final emailValue = email.value;
+    await _firebaseAuth.sendPasswordResetEmail(email: emailValue);
   }
 
   @override
