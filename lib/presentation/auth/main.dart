@@ -52,7 +52,9 @@ class Auth extends StatelessWidget {
                               )
                           ),
                         ),
-                        onTap: () {},
+                        onTap: () async{
+                          await context.read<AuthNotifier>().sendPasswordResetEmail();
+                        },
                       ),
                       _divider(),
                       SignInButton(
