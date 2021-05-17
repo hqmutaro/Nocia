@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nocia/presentation/auth/page.dart';
+import 'package:nocia/presentation/auth/auth_check.dart';
 
 class App extends StatelessWidget {
   const App();
@@ -8,7 +8,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AuthPage()
+        home: AuthCheck()
     );
   }
 }
