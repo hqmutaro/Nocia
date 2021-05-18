@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 @immutable
-class EMailAddress {
+class EmailAddress {
   final String value;
 
-  EMailAddress(this.value);
+  EmailAddress(this.value);
 }
