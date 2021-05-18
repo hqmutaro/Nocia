@@ -20,6 +20,8 @@ class AuthNotifier extends StateNotifier<AuthValuesState> {
     await _app.sendPasswordResetEmail(state.email);
   }
 
+  Future<void> handleSignInByGoogle() async => await _app.handleSignInByGoogle();
+
   void setEmailAddress(String value) {
     state = state.copyWith(email: value);
   }

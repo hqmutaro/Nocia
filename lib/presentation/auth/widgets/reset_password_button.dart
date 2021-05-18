@@ -9,7 +9,7 @@ class ResetPasswordButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 10),
             alignment: Alignment.centerRight,
             child: Text(
-                'パスワードを忘れましたか？',
+                'パスワードをお忘れの場合',
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500

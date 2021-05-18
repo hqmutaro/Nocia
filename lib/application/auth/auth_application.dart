@@ -1,12 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nocia/domain/auth/firebase_auth_repository_base.dart';
+import 'package:nocia/domain/auth/service/google_auth_repository_base.dart';
 import 'package:nocia/domain/auth/value/email_address.dart';
 import 'package:nocia/domain/auth/value/password.dart';
 
 class AuthApplication {
   final FirebaseAuthRepositoryBase _authRepository;
+  final GoogleAuthServiceBase _googleService;
 
-  AuthApplication({required FirebaseAuthRepositoryBase repository}) : _authRepository = repository;
+  AuthApplication({
+    required FirebaseAuthRepositoryBase repository,
+    required GoogleAuthServiceBase googleService
+  })  : _authRepository = repository,
+        _googleService = googleService;
 
   Future<void> registerWithEmailAndPassword(String emailStr, String passwordStr) async {
     final EmailAddress emailAddress = EmailAddress(emailStr);
@@ -24,6 +30,8 @@ class AuthApplication {
     final EmailAddress emailAddress = EmailAddress(emailStr);
     await _authRepository.sendPasswordResetEmail(email: emailAddress);
   }
+
+  Future<void> handleSignInByGoogle() async => await _googleService.handleSignIn();
 
   Future<void> signOut() async => await _authRepository.signOut();
 }
