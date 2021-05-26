@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:nocia/presentation/auth/auth_check.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:nocia/presentation/home/page.dart';
+import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
+import 'package:nocia/presentation/notifier/home/counter_state.dart';
 
 class App extends StatelessWidget {
   const App();
@@ -8,8 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: AuthCheck()
+      home: HomePage()
     );
   }
 }
