@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nocia/domain/news/news.dart';
-import 'package:nocia/domain/news/news_categorized.dart';
+import 'package:nocia/infrastructure/dto/news_categorized.dart';
 
 class NewsCategorizedList extends StatelessWidget {
   final NewsCategorized _newsCategorized;
@@ -9,6 +9,11 @@ class NewsCategorizedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    print(_newsCategorized.newsList.first.item.title);
+    return Column(
+      children: _newsCategorized.newsList.map((news) => Container(
+        child: Center(child: Text(news.item.title!),),
+      )).toList(),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:nocia/presentation/auth/auth_check.dart';
 
 class App extends StatelessWidget {

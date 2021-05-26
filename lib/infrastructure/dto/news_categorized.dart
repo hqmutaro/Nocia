@@ -1,6 +1,6 @@
-import 'package:nocia/domain/news/rss_category.dart';
+import 'package:nocia/domain/news/service/rss_category.dart';
 
-import 'news.dart';
+import '../../domain/news/news.dart';
 
 class NewsCategorized {
   final List<News> _newsList;

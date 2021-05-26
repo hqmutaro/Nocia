@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:nocia/application/news/news_application.dart';
-import 'package:nocia/infrastructure/news/news_categorized_factory.dart';
 import 'package:nocia/infrastructure/news/news_factory.dart';
 import 'package:nocia/infrastructure/news/rss_repository.dart';
 import 'package:nocia/presentation/news/main.dart';
@@ -15,8 +14,7 @@ class NewsPage extends StatelessWidget {
       create: (_) => NewsNotifier(
           app: NewsApplication(
             rssRepository: RssRepository(),
-            newsFactory: NewsFactory(),
-            newsCategorizedFactory: NewsCategorizedFactory()
+            newsFactory: NewsFactory()
           )
       ),
       child: News(),

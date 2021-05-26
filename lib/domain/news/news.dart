@@ -1,9 +1,10 @@
-import 'package:nocia/domain/news/news_id.dart';
+import 'package:nocia/domain/news/value/news_id.dart';
 import 'package:webfeed/domain/rss_item.dart';
 
 class News {
   final NewsId id;
   final RssItem _item;
+
 
   News({
     required this.id,

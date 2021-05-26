@@ -1,5 +1,5 @@
 import 'package:nocia/application/news/news_application.dart';
-import 'package:nocia/domain/news/rss_category.dart';
+import 'package:nocia/domain/news/service/rss_category.dart';
 import 'package:nocia/presentation/notifier/news/news_state.dart';
 import 'package:state_notifier/state_notifier.dart';
 
