@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nocia/domain/news/news_categorized.dart';
+import 'package:nocia/infrastructure/dto/news_categorized.dart';
 import 'package:nocia/presentation/news/widgets/news_list.dart';
 import 'package:nocia/presentation/notifier/news/news_notifier.dart';
 import 'package:nocia/presentation/notifier/news/news_state.dart';
