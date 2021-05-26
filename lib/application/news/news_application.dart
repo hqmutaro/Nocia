@@ -1,9 +1,8 @@
 import 'package:nocia/domain/news/news.dart';
-import 'package:nocia/domain/news/news_categorized.dart';
-import 'package:nocia/domain/news/news_categorized_factory_base.dart';
+import 'package:nocia/infrastructure/dto/news_categorized.dart';
 import 'package:nocia/domain/news/news_factory_base.dart';
 import 'package:nocia/domain/news/rss_repository_base.dart';
-import 'package:nocia/domain/news/rss_category.dart';
+import 'package:nocia/domain/news/service/rss_category.dart';
 import 'package:webfeed/domain/rss_item.dart';
 
 class NewsApplication{
@@ -14,17 +13,15 @@ class NewsApplication{
 
   final RssRepositoryBase _rssRepository;
   final NewsFactoryBase _newsFactory;
-  final NewsCategorizedFactoryBase _newsCategorizedFactory;
 
   NewsApplication({
     required RssRepositoryBase rssRepository,
-    required NewsFactoryBase newsFactory,
-    required NewsCategorizedFactoryBase newsCategorizedFactory
+    required NewsFactoryBase newsFactory
   })  : _rssRepository = rssRepository,
-        _newsFactory = newsFactory,
-        _newsCategorizedFactory = newsCategorizedFactory;
+        _newsFactory = newsFactory;
 
-  Future<NewsCategorized> fetchRss(RssCategory category) async{
+  Future<NewsCategorized> fetchRss(RssCategory category) async {
+    print("fetch");
     String url;
     switch (category) {
       case RssCategory.Activity:
@@ -39,7 +36,9 @@ class NewsApplication{
     }
     var items = await _rssRepository.fetch(url);
     if (items == null) items = <RssItem>[];
-    items.map((RssItem item) => _newsFactory.create(item: item)).toList();
-    return _newsCategorizedFactory.create(newsList: items as List<News>, rssCategory: category);
+    var newsList = <News>[];
+    items.map((RssItem item) => newsList.add(_newsFactory.create(item: item))).toList();
+
+    return NewsCategorized(newsList: newsList, rssCategory: category);
   }
 }
