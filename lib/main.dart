@@ -16,7 +16,7 @@ import 'package:nocia/presentation/app.dart';
 import 'package:nocia/presentation/notifier/auth/auth_notifier.dart';
 import 'package:nocia/presentation/notifier/auth/auth_values_state.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(

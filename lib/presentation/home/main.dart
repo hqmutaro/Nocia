@@ -26,24 +26,24 @@ class Home extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
-        actions: [_page.values.elementAt(currentPage) ?? Container()],
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-                icon: user.photoURL == null ? Icon(
-                  Icons.account_circle,
-                  size: 32,
-                ) : CircleAvatar(
-                  backgroundImage: NetworkImage(user.photoURL!),
-                  backgroundColor: Colors.transparent,
-                  radius:16,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                }
-            );
-          },
-        )
+          actions: [_page.values.elementAt(currentPage) ?? Container()],
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                  icon: user.photoURL == null ? Icon(
+                    Icons.account_circle,
+                    size: 32,
+                  ) : CircleAvatar(
+                    backgroundImage: NetworkImage(user.photoURL!),
+                    backgroundColor: Colors.transparent,
+                    radius:16,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  }
+              );
+            },
+          )
       ),
       body: _page.keys.elementAt(currentPage),
       bottomNavigationBar: _bottomNavigationBar(context, currentPage),
