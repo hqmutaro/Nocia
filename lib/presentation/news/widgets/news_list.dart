@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nocia/domain/news/news.dart';
-import 'package:nocia/domain/news/news_categorized.dart';
+import 'package:nocia/infrastructure/dto/news_categorized.dart';
 import 'package:nocia/presentation/news/widgets/news_categorized_list.dart';
 
 class NewsList extends StatelessWidget {
@@ -10,9 +10,11 @@ class NewsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: _newsCategorizedList.map((NewsCategorized newsCategorized) =>
-          NewsCategorizedList(newsCategorized: newsCategorized)).toList()
+    return SingleChildScrollView(
+      child: Column(
+          children: _newsCategorizedList.map((NewsCategorized newsCategorized) =>
+              NewsCategorizedList(newsCategorized: newsCategorized)).toList()
+      ),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nocia/domain/news/news_categorized.dart';
+import 'package:nocia/infrastructure/dto/news_categorized.dart';
 
 part 'news_state.freezed.dart';
 

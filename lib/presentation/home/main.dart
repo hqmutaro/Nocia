@@ -8,13 +8,14 @@ import 'package:nocia/presentation/notifier/auth/auth_notifier.dart';
 import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
 import 'package:nocia/presentation/notifier/home/counter_state.dart';
 import 'package:nocia/presentation/timetable/page.dart';
+import 'package:nocia/presentation/timetable/widgets/timetable_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
-  final List<Widget> _page = [
-    NewsPage(),
-    TimetablePage()
-  ];
+  final Map<Widget, Widget?> _page = {
+    NewsPage(): null,
+    TimetablePage(): TimetableAppBar()
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +26,26 @@ class Home extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-                icon: user.photoURL == null ? Icon(
-                  Icons.account_circle,
-                  size: 32,
-                ) : CircleAvatar(
-                  backgroundImage: NetworkImage(user.photoURL!),
-                  backgroundColor: Colors.transparent,
-                  radius:16,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                }
-            );
-          },
-        )
+          actions: [_page.values.elementAt(currentPage) ?? Container()],
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                  icon: user.photoURL == null ? Icon(
+                    Icons.account_circle,
+                    size: 32,
+                  ) : CircleAvatar(
+                    backgroundImage: NetworkImage(user.photoURL!),
+                    backgroundColor: Colors.transparent,
+                    radius:16,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  }
+              );
+            },
+          )
       ),
-      body: _page[currentPage],
+      body: _page.keys.elementAt(currentPage),
       bottomNavigationBar: _bottomNavigationBar(context, currentPage),
       drawer: Drawer(
         elevation: 20.0,

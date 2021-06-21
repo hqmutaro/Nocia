@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:nocia/application/init.dart';
+import 'package:nocia/application/timetable/timetable_application.dart';
 import 'package:nocia/application/user/user_notifier.dart';
 import 'package:nocia/infrastructure/auth/firebase_auth_exception_handler.dart';
+import 'package:nocia/infrastructure/timetable/lecture_factory.dart';
+import 'package:nocia/infrastructure/timetable/lecture_repository.dart';
+import 'package:nocia/infrastructure/timetable/timetable_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:nocia/presentation/notifier/auth/auth_notifier.dart';
 
@@ -45,6 +51,7 @@ class SignUpButton extends StatelessWidget {
             ..setPassword("")
             ..setEmailAddress("");
           context.read<UserNotifier>().fetchUser();
+
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => AuthCheck()), (_) => false
@@ -63,6 +70,7 @@ class SignUpButton extends StatelessWidget {
               fontSize: 16.0
           );
         }
+        await Init().initTimetable();
       },
     );
   }
