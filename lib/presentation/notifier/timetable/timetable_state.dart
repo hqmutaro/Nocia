@@ -6,6 +6,8 @@ part 'timetable_state.freezed.dart';
 @freezed
 abstract class TimetableState with _$TimetableState {
   const factory TimetableState({
-    WeekTimetable? weekTimetable
+    WeekTimetable? weekTimetable,
+    String? name,
+    String? room,
   }) = _TimetableState;
 }

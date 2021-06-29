@@ -9,7 +9,6 @@ class NewsCategorizedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(_newsCategorized.newsList.first.item.title);
     return Column(
       children: _newsCategorized.newsList.map((news) => Container(
         child: Center(child: Text(news.item.title!),),
