@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nocia/domain/news/service/rss_category.dart';
 import 'package:nocia/infrastructure/dto/news_categorized.dart';
+import 'package:nocia/presentation/news/category/activity_page.dart';
+import 'package:nocia/presentation/news/category/examination_page.dart';
+import 'package:nocia/presentation/news/category/notification_page.dart';
 import 'package:nocia/presentation/news/widgets/news_list.dart';
 import 'package:nocia/presentation/notifier/news/news_notifier.dart';
 import 'package:nocia/presentation/notifier/news/news_state.dart';
@@ -16,6 +20,16 @@ class News extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
         var newsCategorizedList = context.select<NewsState, List<NewsCategorized>>((state) => state.newsCategorizedList);
+        return TabBarView(
+          children: [
+            ActivityPage(newsList: newsCategorizedList
+                .where((element) =>element.rssCategory == RssCategory.Activity).toList()),
+            ExaminationPage(newsList: newsCategorizedList
+                .where((element) =>element.rssCategory == RssCategory.Examination).toList()),
+            NotificationPage(newsList: newsCategorizedList
+                .where((element) =>element.rssCategory == RssCategory.Notification).toList()),
+          ]
+        );
         return NewsList(newsCategorizedList: newsCategorizedList);
       }
     );

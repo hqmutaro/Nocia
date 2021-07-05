@@ -21,7 +21,6 @@ class NewsApplication{
         _newsFactory = newsFactory;
 
   Future<NewsCategorized> fetchRss(RssCategory category) async {
-    print("fetch");
     String url;
     switch (category) {
       case RssCategory.Activity:

@@ -12,6 +12,6 @@ class AuthCheck extends StatelessWidget {
     if (user == null) {
       return Auth(); // 要認証
     }
-    return HomePage(); // 認証済み
+    return DefaultTabController(length: 3, child: HomePage()); // 認証済み
   }
 }
