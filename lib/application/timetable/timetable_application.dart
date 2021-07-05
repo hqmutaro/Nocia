@@ -30,7 +30,7 @@ class TimetableApplication {
   Future<WeekTimetable> fetchTimetable() async {
     var docs = await _timetableRepository.fetch();
 
-    var dayTimetables = <String, DayTimetable>{};
+    var dayTimetables = <String, List<Map<String, dynamic>?>>{};
     await Future.wait(docs.map((snapshot) async => dayTimetables[snapshot.id] = await _factoryDayTimetable(snapshot)).toList());
 
     return WeekTimetable(
@@ -43,22 +43,15 @@ class TimetableApplication {
     );
   }
 
-  Future<DayTimetable> _factoryDayTimetable(QueryDocumentSnapshot<Map<String, dynamic>?> doc) async {
+  // DayTimetableは使わなくなった
+  Future<List<Map<String, dynamic>?>> _factoryDayTimetable(QueryDocumentSnapshot<Map<String, dynamic>?> doc) async {
     Map<String, dynamic> data = doc.data()!;
-    final List<Map<String, dynamic>> ids = await Future.wait(
+    final List<Map<String, dynamic>> lectures = await Future.wait(
         List.generate(6, (i) {
           return _lectureRepository.find(LectureId(data[(i + 1).toString()]));
         }).toList()
     );
-    var dayTimetable = DayTimetable(
-        first: ids[0],
-        second: ids[1],
-        third: ids[2],
-        fourth: ids[3],
-        fifth: ids[4],
-        sixth: ids[5]
-    );
-    return dayTimetable;
+    return lectures;
 }
 
   Future<void> updateTimetable(Day day, int time, String uuid) async {

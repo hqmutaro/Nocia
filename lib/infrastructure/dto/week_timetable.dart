@@ -1,20 +1,20 @@
 import 'package:nocia/domain/timetable/day_timetable.dart';
 
 class WeekTimetable {
-  final DayTimetable _monday;
-  final DayTimetable _tuesday;
-  final DayTimetable _wednesday;
-  final DayTimetable _thursday;
-  final DayTimetable _friday;
-  final DayTimetable _saturday;
+  final List<Map<String, dynamic>?> _monday;
+  final List<Map<String, dynamic>?> _tuesday;
+  final List<Map<String, dynamic>?> _wednesday;
+  final List<Map<String, dynamic>?> _thursday;
+  final List<Map<String, dynamic>?> _friday;
+  final List<Map<String, dynamic>?> _saturday;
 
   WeekTimetable({
-    required DayTimetable monday,
-    required DayTimetable tuesday,
-    required DayTimetable wednesday,
-    required DayTimetable thursday,
-    required DayTimetable friday,
-    required DayTimetable saturday
+    required List<Map<String, dynamic>?> monday,
+    required List<Map<String, dynamic>?> tuesday,
+    required List<Map<String, dynamic>?> wednesday,
+    required List<Map<String, dynamic>?> thursday,
+    required List<Map<String, dynamic>?> friday,
+    required List<Map<String, dynamic>?> saturday
   })  : _monday = monday,
         _tuesday = tuesday,
         _wednesday = wednesday,
@@ -22,15 +22,15 @@ class WeekTimetable {
         _friday = friday,
         _saturday = saturday;
 
-  DayTimetable get monday => _monday;
+  List<Map<String, dynamic>?> get monday => _monday;
 
-  DayTimetable get tuesday => _tuesday;
+  List<Map<String, dynamic>?> get tuesday => _tuesday;
 
-  DayTimetable get wednesday => _wednesday;
+  List<Map<String, dynamic>?> get wednesday => _wednesday;
 
-  DayTimetable get thursday => _thursday;
+  List<Map<String, dynamic>?> get thursday => _thursday;
 
-  DayTimetable get friday => _friday;
+  List<Map<String, dynamic>?> get friday => _friday;
 
-  DayTimetable get saturday => _saturday;
+  List<Map<String, dynamic>?> get saturday => _saturday;
 }
