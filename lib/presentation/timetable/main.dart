@@ -26,25 +26,27 @@ class Timetable extends StatelessWidget {
             return _initTable();
           }
 
-          return Table(
-              columnWidths: {0: FlexColumnWidth(.6)},
-              children: [
-                TableRow(
+          return SingleChildScrollView(
+            child: Table(
+                columnWidths: {0: FlexColumnWidth(.6)},
+                children: [
+                  TableRow(
+                      children: <Widget>[
+                        TimeCell("")
+                      ] + Day.values.map((day) => DayCell(dayToJA(day))).toList()
+                  ),
+                ] + List.generate(6, (time) => TableRow(
                     children: <Widget>[
-                      TimeCell("")
-                    ] + Day.values.map((day) => DayCell(dayToJA(day))).toList()
-                ),
-              ] + List.generate(6, (time) => TableRow(
-                  children: <Widget>[
-                    TimeCell((time + 1).toString()),
-                    LectureCell(lecture: weekTimetable.monday[time], day: Day.Monday, time: time + 1),
-                    LectureCell(lecture: weekTimetable.tuesday[time], day: Day.Tuesday, time: time + 1),
-                    LectureCell(lecture: weekTimetable.wednesday[time], day: Day.Wednesday, time: time + 1),
-                    LectureCell(lecture: weekTimetable.thursday[time], day: Day.Tuesday, time: time + 1),
-                    LectureCell(lecture: weekTimetable.friday[time], day: Day.Friday, time: time + 1),
-                    LectureCell(lecture: weekTimetable.saturday[time], day: Day.Saturday, time: time + 1),
-                  ]
-              ))
+                      TimeCell((time + 1).toString()),
+                      LectureCell(lecture: weekTimetable.monday[time], day: Day.Monday, time: time + 1),
+                      LectureCell(lecture: weekTimetable.tuesday[time], day: Day.Tuesday, time: time + 1),
+                      LectureCell(lecture: weekTimetable.wednesday[time], day: Day.Wednesday, time: time + 1),
+                      LectureCell(lecture: weekTimetable.thursday[time], day: Day.Tuesday, time: time + 1),
+                      LectureCell(lecture: weekTimetable.friday[time], day: Day.Friday, time: time + 1),
+                      LectureCell(lecture: weekTimetable.saturday[time], day: Day.Saturday, time: time + 1),
+                    ]
+                ))
+            ),
           );
         }
     );
