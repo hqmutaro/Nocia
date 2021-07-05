@@ -2,7 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nocia/application/user/user_notifier.dart';
 import 'package:nocia/application/user/user_state.dart';
+import 'package:nocia/domain/news/service/rss_category.dart';
 import 'package:nocia/presentation/auth/auth_check.dart';
+import 'package:nocia/presentation/home/appbar/menu_drawer.dart';
+import 'package:nocia/presentation/home/appbar/menu_icon.dart';
+import 'package:nocia/presentation/news/appbar/news_tab_bar.dart';
 import 'package:nocia/presentation/news/page.dart';
 import 'package:nocia/presentation/notifier/auth/auth_notifier.dart';
 import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
@@ -30,60 +34,14 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [_page.values.elementAt(currentPage) ?? Container()],
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-                icon: user.photoURL == null ? Icon(
-                  Icons.account_circle,
-                  size: 32,
-                ) : CircleAvatar(
-                  backgroundImage: NetworkImage(user.photoURL!),
-                  backgroundColor: Colors.transparent,
-                  radius:16,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                }
-            );
-          },
-        ),
+        leading: MenuIcon(),
+        bottom: (currentPage == NEWS) ? NewsTabBar() : null,
       ),
       body: _page.keys.elementAt(currentPage),
       bottomNavigationBar: _bottomNavigationBar(context, currentPage),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, //specify the location of the FAB
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: (currentPage == TIMETABLE) ? TimetableFloatingActionButton() : null,
-      drawer: Drawer(
-        elevation: 20.0,
-        child: ListView(
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text(user.displayName ?? ""),
-              accountEmail: Text(user.email!),
-              currentAccountPicture: user.photoURL == null ? Icon(
-                Icons.account_circle,
-                size: 32,
-              ) : CircleAvatar(
-                backgroundImage: NetworkImage(user.photoURL!),
-                backgroundColor: Colors.transparent,
-                radius:16,
-              ),
-              decoration: BoxDecoration(color: Colors.blueAccent),
-            ),
-            ListTile(
-              title: Text("サインアウト"),
-              trailing: Icon(Icons.arrow_forward),
-              onTap: () async {
-                await context.read<AuthNotifier>().signOut();
-                context.read<UserNotifier>().fetchUser();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => AuthCheck()), (_) => false
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: MenuDrawer()
     );
   }
 
@@ -103,6 +61,4 @@ class Home extends StatelessWidget {
       ],
     );
   }
-
-
 }
