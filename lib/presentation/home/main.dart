@@ -9,6 +9,7 @@ import 'package:nocia/presentation/notifier/home/counter_notifier.dart';
 import 'package:nocia/presentation/notifier/home/counter_state.dart';
 import 'package:nocia/presentation/timetable/page.dart';
 import 'package:nocia/presentation/timetable/widgets/timetable_app_bar.dart';
+import 'package:nocia/presentation/timetable/widgets/timetable_floating_action_button.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
@@ -16,6 +17,8 @@ class Home extends StatelessWidget {
     NewsPage(): null,
     TimetablePage(): TimetableAppBar()
   };
+  static const int NEWS = 0;
+  static const int TIMETABLE = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +29,29 @@ class Home extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
-          actions: [_page.values.elementAt(currentPage) ?? Container()],
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                  icon: user.photoURL == null ? Icon(
-                    Icons.account_circle,
-                    size: 32,
-                  ) : CircleAvatar(
-                    backgroundImage: NetworkImage(user.photoURL!),
-                    backgroundColor: Colors.transparent,
-                    radius:16,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  }
-              );
-            },
-          )
+        actions: [_page.values.elementAt(currentPage) ?? Container()],
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+                icon: user.photoURL == null ? Icon(
+                  Icons.account_circle,
+                  size: 32,
+                ) : CircleAvatar(
+                  backgroundImage: NetworkImage(user.photoURL!),
+                  backgroundColor: Colors.transparent,
+                  radius:16,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                }
+            );
+          },
+        ),
       ),
       body: _page.keys.elementAt(currentPage),
       bottomNavigationBar: _bottomNavigationBar(context, currentPage),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, //specify the location of the FAB
+      floatingActionButton: (currentPage == TIMETABLE) ? TimetableFloatingActionButton() : null,
       drawer: Drawer(
         elevation: 20.0,
         child: ListView(
@@ -98,4 +103,6 @@ class Home extends StatelessWidget {
       ],
     );
   }
+
+
 }

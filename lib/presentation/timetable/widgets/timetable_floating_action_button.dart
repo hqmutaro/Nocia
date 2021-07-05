@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nocia/presentation/timetable/add_lecture_page.dart';
 
-class TimetableAppBar extends StatelessWidget {
+class TimetableFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      iconSize: 30,
-      icon: Icon(Icons.add),
+    return FloatingActionButton(
       onPressed: () {
         Navigator.push(context, PageRouteBuilder(
           opaque: false,
@@ -22,7 +20,12 @@ class TimetableAppBar extends StatelessWidget {
             );
           },
         ));
-      }
+      },
+      child: Container(
+        margin: EdgeInsets.all(15.0),
+        child: Icon(Icons.add),
+      ),
+      elevation: 4.0,
     );
   }
 }

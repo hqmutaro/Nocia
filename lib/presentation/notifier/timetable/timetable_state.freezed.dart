@@ -16,9 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TimetableStateTearOff {
   const _$TimetableStateTearOff();
 
-  _TimetableState call({WeekTimetable? weekTimetable}) {
+  _TimetableState call(
+      {WeekTimetable? weekTimetable, String? name, String? room}) {
     return _TimetableState(
       weekTimetable: weekTimetable,
+      name: name,
+      room: room,
     );
   }
 }
@@ -29,6 +32,8 @@ const $TimetableState = _$TimetableStateTearOff();
 /// @nodoc
 mixin _$TimetableState {
   WeekTimetable? get weekTimetable => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get room => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimetableStateCopyWith<TimetableState> get copyWith =>
@@ -40,7 +45,7 @@ abstract class $TimetableStateCopyWith<$Res> {
   factory $TimetableStateCopyWith(
           TimetableState value, $Res Function(TimetableState) then) =
       _$TimetableStateCopyWithImpl<$Res>;
-  $Res call({WeekTimetable? weekTimetable});
+  $Res call({WeekTimetable? weekTimetable, String? name, String? room});
 }
 
 /// @nodoc
@@ -55,12 +60,22 @@ class _$TimetableStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? weekTimetable = freezed,
+    Object? name = freezed,
+    Object? room = freezed,
   }) {
     return _then(_value.copyWith(
       weekTimetable: weekTimetable == freezed
           ? _value.weekTimetable
           : weekTimetable // ignore: cast_nullable_to_non_nullable
               as WeekTimetable?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      room: room == freezed
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -72,7 +87,7 @@ abstract class _$TimetableStateCopyWith<$Res>
           _TimetableState value, $Res Function(_TimetableState) then) =
       __$TimetableStateCopyWithImpl<$Res>;
   @override
-  $Res call({WeekTimetable? weekTimetable});
+  $Res call({WeekTimetable? weekTimetable, String? name, String? room});
 }
 
 /// @nodoc
@@ -89,12 +104,22 @@ class __$TimetableStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? weekTimetable = freezed,
+    Object? name = freezed,
+    Object? room = freezed,
   }) {
     return _then(_TimetableState(
       weekTimetable: weekTimetable == freezed
           ? _value.weekTimetable
           : weekTimetable // ignore: cast_nullable_to_non_nullable
               as WeekTimetable?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      room: room == freezed
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -102,14 +127,18 @@ class __$TimetableStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TimetableState implements _TimetableState {
-  const _$_TimetableState({this.weekTimetable});
+  const _$_TimetableState({this.weekTimetable, this.name, this.room});
 
   @override
   final WeekTimetable? weekTimetable;
+  @override
+  final String? name;
+  @override
+  final String? room;
 
   @override
   String toString() {
-    return 'TimetableState(weekTimetable: $weekTimetable)';
+    return 'TimetableState(weekTimetable: $weekTimetable, name: $name, room: $room)';
   }
 
   @override
@@ -118,12 +147,19 @@ class _$_TimetableState implements _TimetableState {
         (other is _TimetableState &&
             (identical(other.weekTimetable, weekTimetable) ||
                 const DeepCollectionEquality()
-                    .equals(other.weekTimetable, weekTimetable)));
+                    .equals(other.weekTimetable, weekTimetable)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.room, room) ||
+                const DeepCollectionEquality().equals(other.room, room)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(weekTimetable);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(weekTimetable) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(room);
 
   @JsonKey(ignore: true)
   @override
@@ -132,11 +168,17 @@ class _$_TimetableState implements _TimetableState {
 }
 
 abstract class _TimetableState implements TimetableState {
-  const factory _TimetableState({WeekTimetable? weekTimetable}) =
-      _$_TimetableState;
+  const factory _TimetableState(
+      {WeekTimetable? weekTimetable,
+      String? name,
+      String? room}) = _$_TimetableState;
 
   @override
   WeekTimetable? get weekTimetable => throw _privateConstructorUsedError;
+  @override
+  String? get name => throw _privateConstructorUsedError;
+  @override
+  String? get room => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TimetableStateCopyWith<_TimetableState> get copyWith =>
