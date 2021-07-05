@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nocia/domain/news/news.dart';
 import 'package:nocia/infrastructure/dto/news_categorized.dart';
 
 class NewsCategorizedList extends StatelessWidget {
