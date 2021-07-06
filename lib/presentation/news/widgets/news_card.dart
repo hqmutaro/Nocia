@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nocia/domain/news/news.dart';
 import "package:intl/intl.dart";
+import 'package:nocia/domain/news/service/rss_category.dart';
 import 'package:nocia/presentation/news/widgets/web_view_page.dart';
 
 class NewsCard extends StatelessWidget {
@@ -35,6 +36,4 @@ class NewsCard extends StatelessWidget {
       },
     );
   }
-
-  bool isPDF(String url) => url.substring(28, 37) == "UserFiles";
 }

@@ -37,3 +37,5 @@ RssCategory toCategory(int id) {
       throw Exception("ID Not Found");
   }
 }
+
+bool isPDF(String url) => url.substring(28, 37) == "UserFiles";
