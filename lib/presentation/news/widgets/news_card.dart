@@ -20,7 +20,11 @@ class NewsCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
-              leading: isPDF(url) ? Icon(Icons.picture_as_pdf) : Icon(Icons.article),
+              leading: isPDF(url) ?
+              IconTheme(
+                  data: IconThemeData(color: Colors.red),
+                  child: Icon(Icons.picture_as_pdf)
+              ) : Icon(Icons.article),
               title: Text(_news.item.title!),
               subtitle: Text(date),
             ),

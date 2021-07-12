@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:nocia/domain/news/service/rss_category.dart';
 
 class WebViewPage extends StatelessWidget {
@@ -12,11 +12,9 @@ class WebViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WebviewScaffold(
-        url: isPDF(_url) ? _url : "http://www.okinawa-ct.ac.jp/sp/" + _url.substring(27),// spをつけるとモバイルページに遷移する
-        appBar: AppBar(
-          title: Text(""),
-        ), // AppBar
+      appBar: AppBar(),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(url: Uri.parse(isPDF(_url) ? _url : "http://www.okinawa-ct.ac.jp/sp/" + _url.substring(29))),
       ),
     );
   }
