@@ -11,13 +11,9 @@ class WebViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: WebviewScaffold(
-        url: isPDF(_url) ? _url : "http://www.okinawa-ct.ac.jp/sp/" + _url.substring(27),// spをつけるとモバイルページに遷移する
-        appBar: AppBar(
-          title: Text(""),
-        ), // AppBar
-      ),
+    return WebviewScaffold(
+      url: isPDF(_url) ? _url : "http://www.okinawa-ct.ac.jp/sp/" + _url.substring(29),// spをつけるとモバイルページに遷移する
+      appBar: AppBar(),
     );
   }
 }
