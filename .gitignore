@@ -6,6 +6,8 @@
 # Dart Tool
 .dart_tool/
 
+.packages
+
 # Files for the ART/Dalvik VM
 *.dex
 
