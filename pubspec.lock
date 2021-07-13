@@ -422,6 +422,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  match:
+    dependency: "direct main"
+    description:
+      name: match
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
+  match_generator:
+    dependency: "direct dev"
+    description:
+      name: match_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   matcher:
     dependency: transitive
     description:

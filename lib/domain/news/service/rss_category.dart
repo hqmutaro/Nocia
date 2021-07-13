@@ -1,3 +1,6 @@
+import 'package:match/match.dart';
+part 'rss_category.g.dart';
+
 const String activityName = "学校の活動";
 const String examinationName = "受験をお考えの方";
 const String notificationName = "学生・保護者の方へ";
@@ -6,6 +9,7 @@ const int activityId = 0;
 const int examinationId = 1;
 const int notificationId = 2;
 
+@match
 enum RssCategory {
   Activity,
   Examination,
@@ -13,16 +17,11 @@ enum RssCategory {
 }
 
 String toCategoryName(RssCategory type) {
-  switch (type) {
-    case RssCategory.Activity:
-      return activityName;
-    case RssCategory.Examination:
-      return examinationName;
-    case RssCategory.Notification:
-      return notificationName;
-    default:
-      throw Exception("The Category Not Found");
-  }
+  return type.match(
+      activity: () => activityName,
+      examination: () => examinationName,
+      notification: () => notificationName
+  );
 }
 
 RssCategory toCategory(int id) {
