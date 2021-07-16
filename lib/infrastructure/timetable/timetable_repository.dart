@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nocia/domain/timetable/day_timetable.dart';
+import 'package:nocia/domain/timetable/service/timetable_day.dart';
 import 'package:nocia/domain/timetable/timetable_repository_base.dart';
 import 'package:nocia/domain/timetable/value/lecture_id.dart';
 
@@ -16,8 +16,16 @@ class TimetableRepository implements TimetableRepositoryBase {
 
   @override
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> fetch() async {
-    var snapshot = await _firestore.collection("users").doc(_firebaseAuth.currentUser!.uid)
-        .collection("timetable").get();
+    var snapshot;
+    try {
+      snapshot = await _firestore.collection("users").doc(_firebaseAuth.currentUser!.uid)
+          .collection("timetable").get(GetOptions(source: Source.cache));
+    }
+    catch (e) {
+      snapshot = await _firestore.collection("users").doc(_firebaseAuth.currentUser!.uid)
+          .collection("timetable").get(GetOptions(source: Source.server));
+    }
+
     return snapshot.docs;
   }
 
