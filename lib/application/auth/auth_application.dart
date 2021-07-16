@@ -14,16 +14,16 @@ class AuthApplication {
   })  : _authRepository = repository,
         _googleService = googleService;
 
-  Future<void> registerWithEmailAndPassword(String emailStr, String passwordStr) async {
+  Future<UserCredential> registerWithEmailAndPassword(String emailStr, String passwordStr) async {
     final EmailAddress emailAddress = EmailAddress(emailStr);
     final Password password = Password(passwordStr);
-    await _authRepository.registerWithEmailAndPassword(email: emailAddress, password: password);
+    return await _authRepository.registerWithEmailAndPassword(email: emailAddress, password: password);
   }
 
-  Future<void> signInWithEmailAndPassword(String emailStr, String passwordStr) async {
+  Future<UserCredential> signInWithEmailAndPassword(String emailStr, String passwordStr) async {
     final EmailAddress emailAddress = EmailAddress(emailStr);
     final Password password = Password(passwordStr);
-    await _authRepository.signInWithEmailAndPassword(email: emailAddress, password: password);
+    return await _authRepository.signInWithEmailAndPassword(email: emailAddress, password: password);
   }
 
   Future<void> sendPasswordResetEmail(String emailStr) async {
@@ -31,7 +31,7 @@ class AuthApplication {
     await _authRepository.sendPasswordResetEmail(email: emailAddress);
   }
 
-  Future<void> handleSignInByGoogle() async => await _googleService.handleSignIn();
+  Future<UserCredential> handleSignInByGoogle() async => await _googleService.handleSignIn();
 
   Future<void> signOut() async => await _authRepository.signOut();
 }

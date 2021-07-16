@@ -45,8 +45,9 @@ class SignUpButton extends StatelessWidget {
         ),
       ),
       onTap: () async{
+        UserCredential? user;
         try {
-          await context.read<AuthNotifier>().registerWithEmailAndPassword();
+          user = await context.read<AuthNotifier>().registerWithEmailAndPassword();
           context.read<AuthNotifier>()
             ..setPassword("")
             ..setEmailAddress("");
@@ -70,7 +71,11 @@ class SignUpButton extends StatelessWidget {
               fontSize: 16.0
           );
         }
-        await Init().initTimetable();
+        finally {
+          if (user != null) {
+            if (user.additionalUserInfo!.isNewUser) await Init().initTimetable();
+          }
+        }
       },
     );
   }

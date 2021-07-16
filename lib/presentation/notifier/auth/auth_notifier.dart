@@ -8,19 +8,19 @@ class AuthNotifier extends StateNotifier<AuthValuesState> {
 
   AuthNotifier({required AuthApplication app})  : _app = app, super(const AuthValuesState());
 
-  Future<void> registerWithEmailAndPassword() async {
-    await _app.registerWithEmailAndPassword(state.email, state.password);
+  Future<UserCredential> registerWithEmailAndPassword() async {
+    return await _app.registerWithEmailAndPassword(state.email, state.password);
   }
 
-  Future<void> signInWithEmailAndPassword() async {
-    await _app.signInWithEmailAndPassword(state.email, state.password);
+  Future<UserCredential> signInWithEmailAndPassword() async {
+    return await _app.signInWithEmailAndPassword(state.email, state.password);
   }
   
   Future<void> sendPasswordResetEmail() async {
     await _app.sendPasswordResetEmail(state.email);
   }
 
-  Future<void> handleSignInByGoogle() async => await _app.handleSignInByGoogle();
+  Future<UserCredential> handleSignInByGoogle() async => await _app.handleSignInByGoogle();
 
   void setEmailAddress(String value) {
     state = state.copyWith(email: value);

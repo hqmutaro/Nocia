@@ -13,7 +13,7 @@ class GoogleAuthService implements GoogleAuthServiceBase {
   })  : _googleSignIn = googleSignIn;
         //_repository = repository;
 
-  Future<void> handleSignIn() async{
+  Future<UserCredential> handleSignIn() async{
     final GoogleSignInAccount googleUser = (await _googleSignIn.signIn())!;
     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
@@ -21,6 +21,6 @@ class GoogleAuthService implements GoogleAuthServiceBase {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    await FirebaseAuth.instance.signInWithCredential(credential);
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
