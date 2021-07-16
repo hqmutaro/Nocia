@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nocia/domain/timetable/lecture.dart';
 import 'package:nocia/domain/timetable/lecture_repository_base.dart';
+import 'package:nocia/domain/timetable/service/lecture_color.dart';
 import 'package:nocia/domain/timetable/value/lecture_id.dart';
 import 'package:nocia/domain/timetable/value/lecture_name.dart';
 import 'package:nocia/domain/timetable/value/room_name.dart';
@@ -22,7 +23,8 @@ class LectureRepository implements LectureRepositoryBase {
     var id = LectureId("init");
     var name = LectureName("init");
     var room = RoomName("init");
-    var lecture = Lecture(id: id, name: name, room: room);
+    var color = LectureColor.White;
+    var lecture = Lecture(id: id, name: name, room: room, color: color);
     await save(lecture);
   }
 
@@ -37,10 +39,19 @@ class LectureRepository implements LectureRepositoryBase {
 
   @override
   Future<Map<String, dynamic>> find(LectureId id) async {
-    var snapshot = await _firestore.collection("users")
-        .doc(_firebaseAuth.currentUser!.uid)
-        .collection("lectures").doc(id.uuid)
-        .get();
+    var snapshot;
+    try {
+      snapshot = await _firestore.collection("users")
+          .doc(_firebaseAuth.currentUser!.uid)
+          .collection("lectures").doc(id.uuid)
+          .get(GetOptions(source: Source.cache));
+    }
+    catch (e) {
+      snapshot = await _firestore.collection("users")
+          .doc(_firebaseAuth.currentUser!.uid)
+          .collection("lectures").doc(id.uuid)
+          .get(GetOptions(source: Source.server));
+    }
     return snapshot.data()!;
   }
 
@@ -53,10 +64,11 @@ class LectureRepository implements LectureRepositoryBase {
   }
 
   @override
-  Future<void> update(LectureId id, {String? name, String? room}) async {
+  Future<void> update(LectureId id, {String? name, String? room, String? color}) async {
     var map = <String, String>{};
     if (name != null) map.addAll({"name": name});
     if (room != null) map.addAll({"room": room});
+    if (color != null) map.addAll({"color": color});
     await _firestore.collection("users")
         .doc(_firebaseAuth.currentUser!.uid)
         .collection("lectures").doc(id.uuid)

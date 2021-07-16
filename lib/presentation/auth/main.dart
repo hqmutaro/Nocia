@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart' as google;
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:nocia/application/init.dart';
 import 'package:nocia/application/user/user_notifier.dart';
 import 'package:nocia/infrastructure/auth/firebase_auth_exception_handler.dart';
 import 'package:nocia/presentation/auth/auth_check.dart';
@@ -52,9 +53,10 @@ class Auth extends StatelessWidget {
                       google.SignInButton(
                           Buttons.Google,
                           text: "Googleでログイン",
-                          onPressed: () async{
+                          onPressed: () async {
+                            UserCredential? user;
                             try {
-                              await context.read<AuthNotifier>().handleSignInByGoogle();
+                              user = await context.read<AuthNotifier>().handleSignInByGoogle();
                               context.read<UserNotifier>().fetchUser();
                               Navigator.pushAndRemoveUntil(
                                   context,
@@ -73,6 +75,11 @@ class Auth extends StatelessWidget {
                                   textColor: Colors.white,
                                   fontSize: 16.0
                               );
+                            }
+                            finally {
+                              if (user != null) {
+                                if (user.additionalUserInfo!.isNewUser) await Init().initTimetable();
+                              }
                             }
                           }
                       ),

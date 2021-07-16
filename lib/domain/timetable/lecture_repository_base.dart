@@ -6,6 +6,6 @@ abstract class LectureRepositoryBase {
   Future<void> save(Lecture lecture);
   Future<Map<String, dynamic>> find(LectureId id);
   Future<void> delete(LectureId id);
-  Future<void> update(LectureId id, {String? name, String? room});
+  Future<void> update(LectureId id, {String? name, String? room, String? color});
   Future<List<Map<String, dynamic>>> findAll();
 }

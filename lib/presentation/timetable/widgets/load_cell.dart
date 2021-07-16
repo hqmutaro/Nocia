@@ -9,7 +9,7 @@ class LoadCell extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: Color(0xA3F1F1F1),
+              color: Colors.white,
             ),
             height: 100,
           ),
