@@ -1,8 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:nocia/domain/news/rss_repository_base.dart';
 import 'package:webfeed/domain/rss_feed.dart';
 import 'package:webfeed/domain/rss_item.dart';
 import 'package:http/http.dart' as http;
 
+@Injectable(as: RssRepositoryBase)
 class RssRepository implements RssRepositoryBase {
   @override
   Future<RssFeed> feed(String url) async{

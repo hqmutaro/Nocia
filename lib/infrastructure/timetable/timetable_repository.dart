@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:nocia/domain/timetable/service/timetable_day.dart';
 import 'package:nocia/domain/timetable/timetable_repository_base.dart';
 import 'package:nocia/domain/timetable/value/lecture_id.dart';
 
+@Injectable(as: TimetableRepositoryBase)
 class TimetableRepository implements TimetableRepositoryBase {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;

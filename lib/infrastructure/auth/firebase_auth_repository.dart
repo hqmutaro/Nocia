@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:nocia/domain/auth/firebase_auth_repository_base.dart';
 import 'package:nocia/domain/auth/value/email_address.dart';
 import 'package:nocia/domain/auth/value/password.dart';
 
+@Injectable(as: FirebaseAuthRepositoryBase)
 class FirebaseAuthRepository implements FirebaseAuthRepositoryBase {
   final FirebaseAuth _firebaseAuth;
 

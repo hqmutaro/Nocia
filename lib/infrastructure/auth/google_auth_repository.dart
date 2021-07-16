@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import 'package:nocia/domain/auth/firebase_auth_repository_base.dart';
 import 'package:nocia/domain/auth/service/google_auth_repository_base.dart';
 
+@Injectable(as: GoogleAuthServiceBase)
 class GoogleAuthService implements GoogleAuthServiceBase {
   final GoogleSignIn _googleSignIn;
   //final FirebaseAuthRepositoryBase _repository;

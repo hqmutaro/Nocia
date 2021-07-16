@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:nocia/domain/timetable/lecture.dart';
 import 'package:nocia/domain/timetable/lecture_repository_base.dart';
 import 'package:nocia/domain/timetable/service/lecture_color.dart';
@@ -8,6 +9,7 @@ import 'package:nocia/domain/timetable/value/lecture_name.dart';
 import 'package:nocia/domain/timetable/value/room_name.dart';
 import 'package:nocia/infrastructure/dto/lecture_dto.dart';
 
+@Injectable(as: LectureRepositoryBase)
 class LectureRepository implements LectureRepositoryBase {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
