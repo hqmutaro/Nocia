@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nocia/domain/timetable/day_timetable.dart';
+import 'package:nocia/domain/timetable/service/timetable_day.dart';
 import 'package:nocia/domain/timetable/value/lecture_id.dart';
 
 abstract class TimetableRepositoryBase {

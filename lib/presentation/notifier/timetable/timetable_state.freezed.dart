@@ -17,11 +17,17 @@ class _$TimetableStateTearOff {
   const _$TimetableStateTearOff();
 
   _TimetableState call(
-      {WeekTimetable? weekTimetable, String? name, String? room}) {
+      {Map<String, List<Map<String, dynamic>?>>? timetable,
+      String? uuid,
+      String? name,
+      String? room,
+      String? color}) {
     return _TimetableState(
-      weekTimetable: weekTimetable,
+      timetable: timetable,
+      uuid: uuid,
       name: name,
       room: room,
+      color: color,
     );
   }
 }
@@ -31,9 +37,12 @@ const $TimetableState = _$TimetableStateTearOff();
 
 /// @nodoc
 mixin _$TimetableState {
-  WeekTimetable? get weekTimetable => throw _privateConstructorUsedError;
+  Map<String, List<Map<String, dynamic>?>>? get timetable =>
+      throw _privateConstructorUsedError;
+  String? get uuid => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get room => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimetableStateCopyWith<TimetableState> get copyWith =>
@@ -45,7 +54,12 @@ abstract class $TimetableStateCopyWith<$Res> {
   factory $TimetableStateCopyWith(
           TimetableState value, $Res Function(TimetableState) then) =
       _$TimetableStateCopyWithImpl<$Res>;
-  $Res call({WeekTimetable? weekTimetable, String? name, String? room});
+  $Res call(
+      {Map<String, List<Map<String, dynamic>?>>? timetable,
+      String? uuid,
+      String? name,
+      String? room,
+      String? color});
 }
 
 /// @nodoc
@@ -59,15 +73,21 @@ class _$TimetableStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? weekTimetable = freezed,
+    Object? timetable = freezed,
+    Object? uuid = freezed,
     Object? name = freezed,
     Object? room = freezed,
+    Object? color = freezed,
   }) {
     return _then(_value.copyWith(
-      weekTimetable: weekTimetable == freezed
-          ? _value.weekTimetable
-          : weekTimetable // ignore: cast_nullable_to_non_nullable
-              as WeekTimetable?,
+      timetable: timetable == freezed
+          ? _value.timetable
+          : timetable // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<Map<String, dynamic>?>>?,
+      uuid: uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -75,6 +95,10 @@ class _$TimetableStateCopyWithImpl<$Res>
       room: room == freezed
           ? _value.room
           : room // ignore: cast_nullable_to_non_nullable
+              as String?,
+      color: color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -87,7 +111,12 @@ abstract class _$TimetableStateCopyWith<$Res>
           _TimetableState value, $Res Function(_TimetableState) then) =
       __$TimetableStateCopyWithImpl<$Res>;
   @override
-  $Res call({WeekTimetable? weekTimetable, String? name, String? room});
+  $Res call(
+      {Map<String, List<Map<String, dynamic>?>>? timetable,
+      String? uuid,
+      String? name,
+      String? room,
+      String? color});
 }
 
 /// @nodoc
@@ -103,15 +132,21 @@ class __$TimetableStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? weekTimetable = freezed,
+    Object? timetable = freezed,
+    Object? uuid = freezed,
     Object? name = freezed,
     Object? room = freezed,
+    Object? color = freezed,
   }) {
     return _then(_TimetableState(
-      weekTimetable: weekTimetable == freezed
-          ? _value.weekTimetable
-          : weekTimetable // ignore: cast_nullable_to_non_nullable
-              as WeekTimetable?,
+      timetable: timetable == freezed
+          ? _value.timetable
+          : timetable // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<Map<String, dynamic>?>>?,
+      uuid: uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -120,6 +155,10 @@ class __$TimetableStateCopyWithImpl<$Res>
           ? _value.room
           : room // ignore: cast_nullable_to_non_nullable
               as String?,
+      color: color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,39 +166,50 @@ class __$TimetableStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TimetableState implements _TimetableState {
-  const _$_TimetableState({this.weekTimetable, this.name, this.room});
+  const _$_TimetableState(
+      {this.timetable, this.uuid, this.name, this.room, this.color});
 
   @override
-  final WeekTimetable? weekTimetable;
+  final Map<String, List<Map<String, dynamic>?>>? timetable;
+  @override
+  final String? uuid;
   @override
   final String? name;
   @override
   final String? room;
+  @override
+  final String? color;
 
   @override
   String toString() {
-    return 'TimetableState(weekTimetable: $weekTimetable, name: $name, room: $room)';
+    return 'TimetableState(timetable: $timetable, uuid: $uuid, name: $name, room: $room, color: $color)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TimetableState &&
-            (identical(other.weekTimetable, weekTimetable) ||
+            (identical(other.timetable, timetable) ||
                 const DeepCollectionEquality()
-                    .equals(other.weekTimetable, weekTimetable)) &&
+                    .equals(other.timetable, timetable)) &&
+            (identical(other.uuid, uuid) ||
+                const DeepCollectionEquality().equals(other.uuid, uuid)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.room, room) ||
-                const DeepCollectionEquality().equals(other.room, room)));
+                const DeepCollectionEquality().equals(other.room, room)) &&
+            (identical(other.color, color) ||
+                const DeepCollectionEquality().equals(other.color, color)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(weekTimetable) ^
+      const DeepCollectionEquality().hash(timetable) ^
+      const DeepCollectionEquality().hash(uuid) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(room);
+      const DeepCollectionEquality().hash(room) ^
+      const DeepCollectionEquality().hash(color);
 
   @JsonKey(ignore: true)
   @override
@@ -169,16 +219,23 @@ class _$_TimetableState implements _TimetableState {
 
 abstract class _TimetableState implements TimetableState {
   const factory _TimetableState(
-      {WeekTimetable? weekTimetable,
+      {Map<String, List<Map<String, dynamic>?>>? timetable,
+      String? uuid,
       String? name,
-      String? room}) = _$_TimetableState;
+      String? room,
+      String? color}) = _$_TimetableState;
 
   @override
-  WeekTimetable? get weekTimetable => throw _privateConstructorUsedError;
+  Map<String, List<Map<String, dynamic>?>>? get timetable =>
+      throw _privateConstructorUsedError;
+  @override
+  String? get uuid => throw _privateConstructorUsedError;
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
   String? get room => throw _privateConstructorUsedError;
+  @override
+  String? get color => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TimetableStateCopyWith<_TimetableState> get copyWith =>
