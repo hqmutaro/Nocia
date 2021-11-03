@@ -10,6 +10,11 @@ ThemeData nociaTheme() =>
       textTheme: TextTheme(
         subtitle1: TextStyle(color: Colors.white),
         caption: TextStyle(color: Colors.white)
+      ),
+      bottomNavigationBarTheme:BottomNavigationBarThemeData(
+        backgroundColor: themeColor,
+        selectedItemColor: Colors.lightBlueAccent,
+        unselectedItemColor: Colors.white
       )
     );
 
